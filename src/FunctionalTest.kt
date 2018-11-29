@@ -1,8 +1,11 @@
+fun main(args: Array<String>) {
+    val result = printMessage("Hello!")
+    println(result)
+}
 
-
-fun printMessage(parameter: String): Nothing {
+fun printMessage(parameter: String): Any {
     println("Hello $parameter")
-    TODO()
+    return "////" + 2
 }
 
 
@@ -13,14 +16,9 @@ fun printMessage(parameter: String): Nothing {
 
 
 
-fun main(args: Array<String>) {
-    val result = printMessage("Hello!")
-    //rintln(result)
-}
 
 fun TODO2() {
     println()
-    throw NotImplementedError()
 }
 
 
