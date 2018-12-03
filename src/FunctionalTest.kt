@@ -18,7 +18,11 @@ fun printMessage(parameter: String): Any {
 
 
 fun TODO2() {
-    println()
+
+    val words = "one two three four five six seven eight nine ten".split(' ')
+    val frequenciesByFirstChar = words.groupingBy { it.first() }.eachCount()
+
+    println(frequenciesByFirstChar)
 }
 
 
