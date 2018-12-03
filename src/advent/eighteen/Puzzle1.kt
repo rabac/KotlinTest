@@ -1,13 +1,14 @@
 package advent.eighteen
 
 import java.io.File
-
-fun readAllLines(fileName: String): List<String> {
-    return File(fileName).useLines { it.toList() }
+class AdventFileReader {
+    fun readAllLines(fileName: String): List<String> {
+        return File(fileName).useLines { it.toList() }
+    }
 }
 
 fun main(args: Array<String>) {
-    val allLines = readAllLines("/home/rb/dev/KotlinTest/src/advent/eighteen/one-1.txt")
+    val allLines = AdventFileReader().readAllLines("/home/rb/dev/KotlinTest/src/advent/eighteen/one-1.txt")
     println(finalFrequency(allLines))
     println(finalFrequencyWithRecount(allLines))
 }
@@ -31,10 +32,10 @@ private fun finalFrequencyWithRecount(allLines: List<String>): Int {
 
 private fun getTwiceOccuringFrequency(
     allLines: List<String>,
-    currentFrequency: Int,
+    initialFrequency: Int,
     map: HashMap<Int, Int>
 ): Int {
-    var currentFrequency = currentFrequency
+    var currentFrequency = initialFrequency
     allLines.forEach {
         val change = it.toInt()
         currentFrequency = currentFrequency + change;
@@ -46,6 +47,5 @@ private fun getTwiceOccuringFrequency(
         map.put(currentFrequency, newCount)
     }
 
-    println(map)
     return getTwiceOccuringFrequency(allLines, currentFrequency, map)
 }
