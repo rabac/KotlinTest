@@ -19,32 +19,35 @@ fun main(args: Array<String>) {
 
     var x = 0;
 
-    val sortedLines = allLines.sortedWith(Comparator { p1, p2 ->
-       x++
-       compare(p1, p2)
-    })
-
-    println(sortedLines)
-    println(x)
+    allLines.forEachIndexed { index, s ->
+        allLines.drop(index).forEach { s2 ->
+            if(compare(s, s2)) return@forEach
+        }
+    }
 
 }
 
-fun compare(a: String, b: String): Int {
+fun compare(a: String, b: String): Boolean {
 
-    var diffIndex = ArrayList<Int>();
-    a.forEachIndexed { index,  aChar ->
-            if (aChar != b[index]) {
-                diffIndex.add(index)
-            }
+    var allDiffIndexes = ArrayList<Int>();
+    a.forEachIndexed { index, aChar ->
+        if (aChar != b[index]) {
+            allDiffIndexes.add(index)
+
         }
-    println(diffIndex.size)
+    }
 
-    if (diffIndex.size == 1) {
+    if (allDiffIndexes.size == 1) {
+
+        val diffIndex = allDiffIndexes[0]
+        println(a.removeRange(diffIndex, diffIndex+1))
         println(a)
         println(b)
-        return 0
+        println(diffIndex)
+        return true
     }
-    return a.compareTo(b)
+
+    return false
 }
 
 

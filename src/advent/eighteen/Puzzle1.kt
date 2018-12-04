@@ -8,7 +8,7 @@ class AdventFileReader {
 }
 
 fun main(args: Array<String>) {
-    val allLines = AdventFileReader().readAllLines("/home/rb/dev/KotlinTest/src/advent/eighteen/one-1.txt")
+    val allLines = AdventFileReader().readAllLines("/home/rb/IdeaProjects/KotlinTest/src/advent/eighteen/one-1.txt")
     println(finalFrequency(allLines))
     println(finalFrequencyWithRecount(allLines))
 }
@@ -18,7 +18,7 @@ private fun finalFrequency(allLines: List<String>): Int {
     var currentFrequency = 0
     allLines.forEach {
         val change = it.toInt()
-        currentFrequency = currentFrequency + change;
+        currentFrequency += change
     }
     return currentFrequency
 }
@@ -38,13 +38,13 @@ private fun getTwiceOccuringFrequency(
     var currentFrequency = initialFrequency
     allLines.forEach {
         val change = it.toInt()
-        currentFrequency = currentFrequency + change;
-        val count = map.get(currentFrequency)
+        currentFrequency += change
+        val count = map[currentFrequency]
         val newCount = (count ?: 0) + 1;
         if (newCount == 2) {
             return currentFrequency
         }
-        map.put(currentFrequency, newCount)
+        map[currentFrequency] = newCount
     }
 
     return getTwiceOccuringFrequency(allLines, currentFrequency, map)
