@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     var countTwo = 0
     var countThree = 0
 
-    val allLines = AdventFileReader().readAllLines("/home/rb/IdeaProjects/KotlinTest/src/advent/eighteen/two-1.txt")
+    val allLines = AdventFileReader().readAllLines("/home/rb/dev/KotlinTest/src/advent/eighteen/two-1.txt")
 
     println(allLines.size)
     allLines.forEach {
@@ -16,8 +16,6 @@ fun main(args: Array<String>) {
     println(countTwo)
     println(countThree)
     println(countTwo * countThree)
-
-    var x = 0;
 
     allLines.forEachIndexed { index, s ->
         allLines.drop(index).forEach { s2 ->
